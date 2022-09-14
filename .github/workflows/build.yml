@@ -1,15 +1,13 @@
-name: Build
+name: AssetStudioBuild
 
 on:
   push:
-    branches:
-      - 'master'
-    paths-ignore:
-      - '**/LICENSE'
-      - '**/README.md'
-      - '**/build.yml'
-      - '**/.gitignore'
-      - '**/.gitattributes'
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: windows-latest
@@ -18,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: microsoft/setup-msbuild@v1.1
 
-      - name: Download FBX SDK
+      - name: Download FBX SDK 
         run: |
           md fbx
           cd fbx
