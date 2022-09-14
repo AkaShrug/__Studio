@@ -1,13 +1,16 @@
-name: AssetStudioBuild
+name: Build
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  workflow_dispatch:
-
+    branches:
+      - 'master'
+    paths-ignore:
+      - '**/LICENSE'
+      - '**/README.md'
+      - '**/build.yml'
+      - '**/.gitignore'
+      - '**/.gitattributes'
+    workflow_dispatch:
 jobs:
   build:
     runs-on: windows-latest
